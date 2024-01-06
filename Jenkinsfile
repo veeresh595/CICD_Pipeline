@@ -1,8 +1,15 @@
 pipeline{
 
 
-    agent any {
+    agent any 
+          tool{
+            maven 'maven'
+	  }
 
+	  enviornment{
+               SCANNER_HOME=tool 'sonar-scanner'
+
+	  }
      stages{
 
        stage('git checkout'){
@@ -13,14 +20,6 @@ pipeline{
        }
 
      }
-
-
-
-    
-
-
-
-    }
     
 
 }
