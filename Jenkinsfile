@@ -36,11 +36,10 @@ pipeline{
        steps{
             
 	    sh 'mvn verify -DskipUnitTests'
-        }
-      }
-    
-
-   }  
+      
+    }
+   }
+  }  
  } 
 
 
