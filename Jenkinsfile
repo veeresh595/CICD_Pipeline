@@ -20,19 +20,27 @@ pipeline{
 
    }
   }
-   stage('Unit test'){
+       stage('Unit test'){
 
-   steps{
+        steps{
 
-   sh 'mvn test'
+          sh 'mvn test'
 
     
-    }
+     }
   
-  }
+    } 
+     
+       stage('Integration test'{
 
+       steps{
+            
+	    sh 'mvn verify -DskipUnitTests'
 
-}
-}
+	}
+      }
+
+   }  
+ } 
 
 
