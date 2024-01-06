@@ -1,24 +1,28 @@
 pipeline{
  agent any
-  tool{
+  tools{
     maven 'maven'
 }
 
- enviornment{
+ enviornment {
   SCANNER_HOME=tool 'sonar-scanner'
 
 }
   stages{
 
-    stage('git checkout')
+    stage('git checkout'){
+
     steps{
 
-      git branch:'main',url:'https://github.com/veeresh595/CICD_Pipeline.git'
+   git branch:'main',url:'https://github.com/veeresh595/CICD_Pipeline.git'
 
 
    }
-
+   
   }
+
+  
+}
 }
 
 
