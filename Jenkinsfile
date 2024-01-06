@@ -31,7 +31,7 @@ pipeline{
   
     } 
      
-       stage('Integration test'{
+       stage('Integration test'){
 
        steps{
             
