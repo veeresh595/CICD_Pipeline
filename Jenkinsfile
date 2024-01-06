@@ -58,6 +58,13 @@ pipeline{
      }	   
     }    
    } 
+  }        
+    stage('Quality gate check'){
+    steps{
+    script{
+           waitForQualityGate abortPipeline: false, credentialsId: 'sonar'
+    } 
+   }  
   }
  }  
 } 
