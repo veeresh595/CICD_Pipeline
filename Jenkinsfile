@@ -85,7 +85,21 @@ pipeline{
              sh 'docker image tag $JOB_NAME:v1.$BUILD_ID veeresh595/$JOB_NAME:latest'
     }
    }
-  } 
+  }
+
+   stage('Docker image push'){
+
+   steps{
+   script{
+          withCredentials([gitUsernamePassword(credentialsId: 'dockerhub', gitToolName: 'Default')]) {
+           sh 'docker login -u veeresh595 -p $(dockerhub_credentials)'
+	   sh 'docker push $JOB_NAME:v1.$BUILD_ID veeresh595/$JOB_NAME:v1.$BUILD_ID' 
+           sh 'docker push $JOB_NAME:v1.$BUILD_ID veeresh595/$JOB_NAME:latest'
+}  
+
+    }  
+   }
+  }
  }  
 } 
 
