@@ -91,8 +91,8 @@ pipeline{
 
    steps{
    script{
-          withCredentials([gitUsernamePassword(credentialsId: 'dockerhub', gitToolName: 'Default')]) {
-           sh 'docker login -u veeresh595 -p $(dockerhub_credentials)'
+          withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pwd', usernameVariable: 'username')]) {
+           sh 'docker login -u $(username) -p $(pwd)'
 	   sh 'docker push $JOB_NAME:v1.$BUILD_ID veeresh595/$JOB_NAME:v1.$BUILD_ID' 
            sh 'docker push $JOB_NAME:v1.$BUILD_ID veeresh595/$JOB_NAME:latest'
 }  
