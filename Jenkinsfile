@@ -70,7 +70,7 @@ pipeline{
    stage('upload to nexus'){
    steps{
    script{ def readPomVersion = readMavenPom file: 'pom.xml'
-           def nexusRepo= readPomVersion.version.endsWith("SANPSHOT") ? "Javapps-snapshots":"Javapps-release" 
+           def nexusRepo= readPomVersion.version.endsWith("SNAPSHOT") ? "Javapps-snapshots":"Javapps-release" 
 
            nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'com.example', nexusUrl: 'tools.veereshdevops.info:8081', nexusVersion: 'nexus3', protocol: 'http', repository: nexusRepo, version:"${readPomVersion.version}" 
     }
